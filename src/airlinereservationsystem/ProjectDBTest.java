@@ -130,7 +130,7 @@ public class ProjectDBTest {
 		java.io.ByteArrayOutputStream out = new java.io.ByteArrayOutputStream();    
 		System.setOut(new java.io.PrintStream(out));    
 		
-		ProjectDB.add(fd);
+		ProjectDB.add(sf);
 		assertEquals("", out.toString());
 	}
 }
