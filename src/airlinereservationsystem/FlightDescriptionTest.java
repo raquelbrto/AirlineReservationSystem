@@ -22,14 +22,33 @@ class FlightDescriptionTest {
 	}
 	
 	@Test
+	public void checkTimeBadFormatLimiteInferiorMinuto() {
+		boolean resp = FlightDescription.check_time("00:-1");
+		assertEquals(false, resp); 
+	}
+	
+	@Test
 	public void checkTimeBadFormatLimiteInferiorHora() {
 		boolean resp = FlightDescription.check_time("-1:00");
 		assertEquals(false, resp); 
 	}
+	
+	@Test
+	public void checkTimeBadFormatLimiteSuperiorHora() {
+		boolean resp = FlightDescription.check_time("24:00");
+		assertEquals(false, resp); 
+	}
 		
+	
 	@Test
 	public void checkTimeBadFormatMinutoInseridoErrado() {
 		boolean resp = FlightDescription.check_time("01:0");
+		assertEquals(false, resp); 
+	}
+	
+	@Test
+	public void checkTimeBadFormatHoraErrada() {
+		boolean resp = FlightDescription.check_time("70:00");
 		assertEquals(false, resp); 
 	}
 	
