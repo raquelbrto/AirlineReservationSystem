@@ -2,12 +2,42 @@ package airlinereservationsystem;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.io.RandomAccessFile;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
+import org.junit.Before;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 public class ProjectDBTest {
+	String persons;
+	String passengers;
+	String flight_desc;
+	String sched_flight;
+	static String test;
+	
+	@Before
+	public void guardarConteudoOriginal () throws IOException {
+		
+//		persons = new String(Files.readAllBytes(Paths.get("./person_file.txt")));
+//		passengers = new String(Files.readAllBytes(Paths.get("./passenger_file.txt")));
+//		flight_desc = new String(Files.readAllBytes(Paths.get("./flight_description_file.txt")));
+//		sched_flight = new String(Files.readAllBytes(Paths.get("./scheduled_flight_file.txt")));
+//		test = new String(Files.readAllBytes(Paths.get("./test.txt")));
+		
+	}
 
 	@BeforeEach
 	public void setUp() {
@@ -132,5 +162,28 @@ public class ProjectDBTest {
 		
 		ProjectDB.add(sf);
 		assertEquals("", out.toString());
+	}
+	
+	//Remove os dados criados pelos testes
+	@AfterAll
+	public static void tearDown () throws IOException {
+		
+		apagarUltimaLinha("person_file.txt");
+		apagarUltimaLinha("passenger_file.txt");
+		apagarUltimaLinha("flight_description_file.txt");
+		apagarUltimaLinha("scheduled_flight_file.txt");
+	}
+	
+	private static void apagarUltimaLinha (String arquivo) throws IOException {
+		RandomAccessFile f = new RandomAccessFile(arquivo, "rw");
+		long length = f.length() - 1;
+		byte b;
+		do {                     
+		  length -= 1;
+		  f.seek(length);
+		  b = f.readByte();
+		} while(b != 10);
+		f.setLength(length+1);
+		f.close();
 	}
 }
