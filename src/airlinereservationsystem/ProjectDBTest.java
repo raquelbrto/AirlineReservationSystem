@@ -27,17 +27,6 @@ public class ProjectDBTest {
 	String flight_desc;
 	String sched_flight;
 	static String test;
-	
-	@Before
-	public void guardarConteudoOriginal () throws IOException {
-		
-//		persons = new String(Files.readAllBytes(Paths.get("./person_file.txt")));
-//		passengers = new String(Files.readAllBytes(Paths.get("./passenger_file.txt")));
-//		flight_desc = new String(Files.readAllBytes(Paths.get("./flight_description_file.txt")));
-//		sched_flight = new String(Files.readAllBytes(Paths.get("./scheduled_flight_file.txt")));
-//		test = new String(Files.readAllBytes(Paths.get("./test.txt")));
-		
-	}
 
 	@BeforeEach
 	public void setUp() {
