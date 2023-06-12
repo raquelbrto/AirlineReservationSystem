@@ -13,6 +13,11 @@ class ScheduledFlightTest {
 	}
 	
 	@Test
+	public void  check_date_formatDataValidaIgual() {
+		boolean resp = ScheduledFlight.check_date_format("2023/01/00");
+		assertEquals(true, resp);
+	}
+	@Test
 	public void  check_date_formatDataInvalida() {
 		boolean resp = ScheduledFlight.check_date_format("2023/13/32");
 		assertEquals(false, resp);
@@ -36,6 +41,17 @@ class ScheduledFlightTest {
 	}
 	
 	@Test
+	public void  check_date_formatDataDia() {
+		boolean resp = ScheduledFlight.check_date_format("2023/12/12");
+		assertEquals(true, resp);
+	}
+	@Test
+	public void  check_date_formatDataMes() {
+		boolean resp = ScheduledFlight.check_date_format("2023/01/31");
+		assertEquals(true, resp);
+	}
+	
+	@Test
 	public void  check_date_formatDataInvalidaDiaLimite() {
 		boolean resp = ScheduledFlight.check_date_format("2023/12/-1");
 		assertEquals(false, resp);
@@ -45,6 +61,12 @@ class ScheduledFlightTest {
 	public void  check_date_formatacaoErradaAno() {
 		boolean resp = ScheduledFlight.check_date_format("203/12/09");
 		assertEquals(false, resp);
+	}
+	
+	@Test
+	public void  check_date_formatacaoE() {
+		boolean resp = ScheduledFlight.check_date_format("2023/1/9");
+		assertEquals(true, resp);
 	}
 	
 	@Test
@@ -70,5 +92,9 @@ class ScheduledFlightTest {
 		boolean resp = ScheduledFlight.check_date_format("34");
 		assertEquals(false, resp);
 	}
+	
+	@Test
+	public void check_date_output() {
+		String str = "Bad formated date !";
+	}
 }
-
